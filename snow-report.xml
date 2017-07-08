@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report type="SingleField">
+	<date>2017-07-06</date>
+	<time>23:41</time>
+	<skiarea>
+		<id>1</id>
+		<name>A Ski Field</name>
+		<date>2017-07-06</date>
+		<time>23:41</time>
+		<status>
+			<code>2</code>
+			<label>Opening</label>
+			<openingdate>2017-07-15</openingdate>
+			<updatetime></updatetime>
+		</status>
+		<weather>
+			<code>2</code>
+			<brief>Cloudy</brief>
+			<wind>sw</wind>
+			<temperature>-1</temperature>
+			<visibility>infinity</visibility>
+			<detail></detail>
+		</weather>
+		<snow>
+			<base>100</base>
+			<upperbase>100</upperbase>
+			<detail></detail>
+			<latestfall>100</latestfall>
+			<latestfalldate>2017-07-01</latestfalldate>
+		</snow>
+		<road>
+			<code>0</code>
+			<brief>Closed</brief>
+			<detail>Opening Soon!</detail>
+		</road>
+		<facilities>
+			<facilitytype>
+				<id>1</id>
+				<name>Park / Pipe</name>
+				<facility>
+					<id>3</id>
+					<name>Skiing</name>
+					<status>
+						<code>1</code>
+						<label>On Hold</label>
+					</status>
+				</facility>
+			</facilitytype>
+			<facilitytype>
+				<id>2</id>
+				<name>Lifts</name>
+				<facility>
+					<id>1</id>
+					<name>Lift A</name>
+					<status>
+						<code>1</code>
+						<label>On Hold</label>
+					</status>
+					<brief/>
+				</facility>
+				<facility>
+					<id>2</id>
+					<name>Lift B</name>
+					<status>
+						<code>1</code>
+						<label>On Hold</label>
+					</status>
+					<brief/>
+				</facility>
+				<facility>
+					<id>5</id>
+					<name>Lift C</name>
+					<status>
+						<code>1</code>
+						<label>On Hold</label>
+					</status>
+					<brief/>
+				</facility>
+			</facilitytype>
+			<facilitytype>
+				<id>3</id>
+				<name>Cafes</name>
+				<facility>
+					<id>4</id>
+					<name>Cafe</name>
+					<status>
+						<code>2</code>
+						<label>Open</label>
+					</status>
+					<brief/>
+				</facility>
+			</facilitytype>
+		</facilities>
+		<information>This is a ski Field!</information>
+	</skiarea>
+</report>

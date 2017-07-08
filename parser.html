@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<body onload="loadXMLDoc()">
+<h2>Ski Field XML Parser:</h2>
+<button type="button" onclick="loadXMLDoc()">Refresh</button>
+<b>
+<p id="lastUpdated">
+Last Updated:
+</p>
+</b>
+<h1> Ski Field: <span id="skiFieldStatus"></span> </h1>
+
+<p id="skiFieldInformation"></p>
+
+<h2> Road: <span id="roadStatus"></span> </h2>
+<div id="roadInfo"></div>
+
+<h2> Snow </h2>
+<p>
+Lower Base: <span id="lowerBase"></span>cm Upper Base: <span id="upperBase"></span>cm </br>
+Latest Fall: <span id="latestFall"></span>cm on <span id="latestFallDate"></span></br>
+<span id="snowInformation"></span>
+</p>
+
+<h2> Weather </h2>
+<b><span id="weatherBrief"></span></b> | <span id="weatherTemp"></span>C</br>
+Wind Direction: <span id="weatherWind"></span> </br>
+Visibility: <span id="weatherVisibility"></span></br>
+<span id="weatherDetail"></span>
+
+</br>
+<div id="facilities"></div>
+
+<script>
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      parseXML(this);
+    }
+  };
+  xmlhttp.open("GET", "http://www.tukino.co.nz/snow-report-xml", true);
+  xmlhttp.send();
+}
+
+function parseXML(xml) {
+  var xmlDoc = xml.responseXML;
+  var report = xmlDoc.getElementsByTagName("report");
+  var skiArea = report[0].getElementsByTagName("skiarea");
+  var status = skiArea[0].getElementsByTagName("status");
+  var weather = skiArea[0].getElementsByTagName("weather");
+  var snow = skiArea[0].getElementsByTagName("snow");
+  var road = skiArea[0].getElementsByTagName("road");
+  var facilities = skiArea[0].getElementsByTagName("facilities");
+
+  document.getElementById("lastUpdated").innerHTML = getNodeValue(report, "date", "time");
+  document.getElementById("skiFieldStatus").innerHTML = getNodeValue(status, "label", "openingdate", "updatetime");
+  document.getElementById("skiFieldInformation").innerHTML = getNodeValue(skiArea, "information");
+  document.getElementById("roadStatus").innerHTML = getNodeValue(road, "brief");
+  document.getElementById("roadInfo").innerHTML = getNodeValue(road, "detail");
+  document.getElementById("lowerBase").innerHTML = getNodeValue(snow, "base");
+  document.getElementById("upperBase").innerHTML = getNodeValue(snow, "upperbase");
+  document.getElementById("snowInformation").innerHTML = getNodeValue(snow, "detail");
+  document.getElementById("latestFall").innerHTML = getNodeValue(snow, "latestfall");
+  document.getElementById("latestFallDate").innerHTML = getNodeValue(snow, "latestfalldate");
+  document.getElementById("weatherBrief").innerHTML = getNodeValue(weather, "brief");
+  document.getElementById("weatherWind").innerHTML = getNodeValue(weather, "wind");
+  document.getElementById("weatherTemp").innerHTML = getNodeValue(weather, "temperature");
+  document.getElementById("weatherVisibility").innerHTML = getNodeValue(weather, "visibility");
+  document.getElementById("weatherDetail").innerHTML = getNodeValue(weather, "detail");
+  document.getElementById("facilities").innerHTML = getFacilities(facilities); 
+}
+
+function getFacilities(facilities){
+  var list = facilities[0].getElementsByTagName("facilitytype");
+  var out = "";
+  for(var i = 0; i < list.length; i++){
+      var thisFacil = list[i].getElementsByTagName("facility");
+      for(var g = 0; g < thisFacil.length; g++){
+        var facilDetail = thisFacil[g].getElementsByTagName("status");
+        out += thisFacil[g].getElementsByTagName("name")[0].firstChild.nodeValue + ": " + getNodeValue(facilDetail, "label") + "</br>";
+      }
+  }
+  return out;
+
+}
+
+function getNodeValue(parent, tag){
+  out = "";
+  for(var i = 1; i < arguments.length; i++){
+    node = parent[0].getElementsByTagName(arguments[i])[0].firstChild;
+    if(node == null) break;
+    value = node.nodeValue;
+    if(value == null) break;
+    out += value + " ";
+  }
+  return out;
+}
+</script>
+
+</body>
+</html>
