@@ -7,6 +7,8 @@
  * 
  * Built By: Morgan French-Stagg <morgan@french.net.nz> 2017
  * Last Updated: Jun 2018
+ * 
+ * https://github.com/naggyman/Ski-XML
  */
 
 
