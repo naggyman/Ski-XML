@@ -54,7 +54,9 @@ function parseXML(e) {
     document.getElementById("lastUpdated").innerHTML = getTimeStr(new Date(updateTime));
 
     //Ski Field Status
-    var statusLabel = getNodeValue(status, "label") + getDayStr(new Date(getNodeValue(status, "openingdate"))) + " ";
+    var openingdate = getNodeValue(status, "openingdate");
+    var openingdateStr = getDayStr(new Date(openingdate));
+    var statusLabel = getNodeValue(status, "label") + ((openingdate != "")? openingdateStr : "") + " ";
     
     /*
      * Status code determines the Ski Field Status
@@ -75,11 +77,11 @@ function parseXML(e) {
      * Road Status Information
      *  4WD With Chains = Pause
      *  On Hold = Pause
-     *  Open = Tick
-     *  Closed = Cross
+     *  Open (4WD) = Tick
+     *  Closed or Shuttle Bus only = Cross
      */
     var roadBrief = getNodeValue(road, "brief");
-    if(roadBrief == "Closed "){roadBrief += cross;}
+    if(roadBrief == "Closed " || roadBrief == "Shuttle Bus only "){roadBrief += cross;}
     else if(roadBrief.substring(0, 4) == "Open"){roadBrief += tick;}
     else{roadBrief += pause;}
 
