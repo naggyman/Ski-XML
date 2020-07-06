@@ -13,7 +13,7 @@
 
 
 //basic global variables
-var url = "https://tukino.org/assets/snow.txt?_=" + (new Date).getTime();
+var url = "https://www.tukino.org/assets/snow.txt?_=" + (new Date).getTime();
 var tick = "<img src='https://tukino.org/assets/snow-report/tick.png' height='15' width='15'></img>";
 var cross = "<img src='https://tukino.org/assets/snow-report/cross.png' height='15' width='15'></img>";
 var pause = "<img src='https://tukino.org/assets/snow-report/pause.png' height='15' width='15'></img>";
