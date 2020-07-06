@@ -6,7 +6,7 @@
  * Built for Tukino Mountain Clubs Association - tukino.org
  * 
  * Built By: Morgan French-Stagg <morgan@french.net.nz> 2017
- * Last Updated: Jun 2018
+ * Last Updated: Jul 2020
  * 
  * https://github.com/naggyman/Ski-XML
  */
@@ -55,7 +55,7 @@ function parseXML(e) {
 
     //Ski Field Status
     var openingdate = getNodeValue(status, "openingdate");
-    var openingdateStr = getDayStr(new Date(openingdate));
+    var openingdateStr = getDayStr(new Date(openingdate.substring(0,7)));
     console.log(openingdate);
     console.log(openingdateStr);
     var statusLabel = getNodeValue(status, "label") + ((openingdate != "")? openingdateStr : "") + " ";
