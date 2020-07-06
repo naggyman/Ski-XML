@@ -56,6 +56,8 @@ function parseXML(e) {
     //Ski Field Status
     var openingdate = getNodeValue(status, "openingdate");
     var openingdateStr = getDayStr(new Date(openingdate));
+    console.log(openingdate);
+    console.log(openingdateStr);
     var statusLabel = getNodeValue(status, "label") + ((openingdate != "")? openingdateStr : "") + " ";
     
     /*
