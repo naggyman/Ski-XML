@@ -6,14 +6,14 @@
  * Built for Tukino Mountain Clubs Association - tukino.org
  * 
  * Built By: Morgan French-Stagg <morgan@french.net.nz> 2017
- * Last Updated: Jul 2020
+ * Last Updated: Jul 2024
  * 
  * https://github.com/naggyman/Ski-XML
  */
 
 
 //basic global variables
-var url = "https://api.frenchsta.gg/tukino/snow-report?_=" + (new Date).getTime();
+var url = "https://api.frenchsta.gg/tukino/snow-report";
 var tick = "<img src='https://tukino.org/assets/snow-report/tick.png' height='15' width='15'></img>";
 var cross = "<img src='https://tukino.org/assets/snow-report/cross.png' height='15' width='15'></img>";
 var pause = "<img src='https://tukino.org/assets/snow-report/pause.png' height='15' width='15'></img>";
